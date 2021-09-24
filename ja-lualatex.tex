@@ -1,4 +1,8 @@
-\documentclass{beamer}
+% Beamerで日本語を扱うときにはdocumentクラスのオプションにunicodeを指定しておく
+% ここでのunicodeオプションはhyperrefパッケージに渡すためのもの
+
+\documentclass[unicode]{beamer}
+
 
 % デフォルトのLatin Modernフォントはスライド用としては細身すぎるのでLibertinusフォントに変更
 \usepackage[no-math]{fontspec}
@@ -7,10 +11,15 @@
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
 
+% 日本語対応
+\usepackage[ipaex]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+% ムービー用パッケージ
 \usepackage{multimedia}
 
-\author{Takumi Noguchi}
-\institute{Somewhere}
+\author{野口匠}
+\institute{そのへん}
 \date{2021/09/24}
 
 \begin{document}
@@ -20,7 +29,7 @@
 
 % \movie[option]{poster text}{movie file} の書式
 
-\begin{frame}{movie sample (in PDF)}
+\begin{frame}{PDF内で再生}
 	\centering
 	\movie[width=8cm, height=4.5cm]{%
 		% ここがサムネ（テキストでも図でも可）
@@ -28,7 +37,7 @@
 	}{./movie/sample.mp4}
 \end{frame}
 
-\begin{frame}{movie sample (in external viewer)}
+\begin{frame}{外部ビューワーを呼び出し}
 	\centering
 	\movie[externalviewer]{
 		Click to start the movie
